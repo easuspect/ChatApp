@@ -13,3 +13,4 @@ class MessageRepository {
         return [Message(user: "Tolga", content: "Hi", timeStamp: Date(), chatUuid: chatUuid, chatImage: UIImage(named: "TolgaImages")), Message(user: "Danny", content: "Hello", timeStamp: Date(), chatUuid: chatUuid, chatImage: UIImage(named: "DannyImages"))]
     }
 }
+
