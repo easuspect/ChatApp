@@ -10,10 +10,28 @@ import SwiftUI
 struct MessagingView: View {
     
     @State var messageToSend: String = ""
+    @State private var isShowingChatListView = false
+    
+    
     var currentUser: String = "Tolga"
     
     var body: some View {
-            VStack {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: { isShowingChatListView = true })
+                {
+                    Image(systemName: "person.badge.plus" )
+                        .resizable()
+                        .frame(width:40, height:40)
+                }
+            }
+            .padding(.horizontal, 24)
+            .sheet(isPresented: $isShowingChatListView) {
+                ChatListView()
+            }
+                
+                .padding(.horizontal, 24)
                 List(MessageRepository().getMessages(), id: \.uuid) { message in
                     if message.user == currentUser {
                         SendMessage(message: message)
@@ -23,9 +41,12 @@ struct MessagingView: View {
                 }
                 HStack {
                     TextField("Send Message", text: $messageToSend)
-                        .frame(width: 280,height: 40)
-                        .border(.gray)
-                        .cornerRadius(5)
+                        .padding(10)
+                        .cornerRadius(10)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .stroke(.gray, lineWidth: 1)
+                        }
                     Button(action: { }) {
                         Image(systemName: "paperplane.circle.fill")
                             .resizable()
@@ -36,52 +57,50 @@ struct MessagingView: View {
             }
         }
     }
-
-struct MessagingView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessagingView()
+    
+    struct MessagingView_Previews: PreviewProvider {
+        static var previews: some View {
+            MessagingView()
+        }
     }
-}
-
-struct SendMessage: View {
-    var message: Message
-    var body: some View {
-        HStack {
+    
+    struct SendMessage: View {
+        var message: Message
+        var body: some View {
             HStack {
-                Spacer(minLength: 240)
-                Image("TolgaImages")
+                HStack {
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text(message.content)
+                        Text(message.user)
+                            .font(.footnote)
+                    }
+                    Image("TolgaImages")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(10)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
+    }
+    
+    struct ReceivedMessage: View {
+        var message: Message
+        var body: some View {
+            HStack {
+                Image("DannyImages")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .cornerRadius(10)
                     .aspectRatio(contentMode: .fit)
-                
-            Spacer()
-                VStack(alignment: .trailing) {
+                VStack(alignment: .leading) {
                     Text(message.content)
                     Text(message.user)
                         .font(.footnote)
                 }
             }
         }
-    }
-}
-
-struct ReceivedMessage: View {
-    var message: Message
-    var body: some View {
-        HStack {
-            Image("DannyImages")
-                .resizable()
-                .frame(width: 30, height: 30)
-                .cornerRadius(10)
-                .aspectRatio(contentMode: .fit)
-            VStack(alignment: .leading) {
-                Text(message.content)
-                Text(message.user)
-                    .font(.footnote)
-            }
-        }
-    }
 }
 
 

@@ -28,3 +28,5 @@ struct ChatListView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
+
+

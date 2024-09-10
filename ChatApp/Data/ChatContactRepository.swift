@@ -9,7 +9,7 @@ import Foundation
 
 class ChatContactRepository {
     func getChatContacts() -> [ChatContact] {
-        return [ChatContact(name: "Danny", isOnline: true), ChatContact(name: "Tolga", lastMessage: "Hi", isOnline: false)]
+        return [ChatContact(name: "Danny", isOnline: true), ChatContact(name: "Tolga", lastMessage: "Hi", isOnline: false), ChatContact(name: "Jenny", isOnline: false), ChatContact(name: "Brian", isOnline: false), ChatContact(name: "Ally", isOnline: false)]
     }
 }
 
