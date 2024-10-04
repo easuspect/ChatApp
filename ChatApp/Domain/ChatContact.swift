@@ -8,6 +8,7 @@
 import Foundation
 
 struct ChatContact {
+    var uuid: UUID = UUID()
     var name: String
     var lastMessage: String?
     var isOnline: Bool

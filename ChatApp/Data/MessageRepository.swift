@@ -8,9 +8,16 @@ import UIKit
 import Foundation
 
 class MessageRepository {
+    private var messages: [Message] = []
+    
     func getMessages() -> [Message] {
-        let chatUuid = UUID()
-        return [Message(user: "Tolga", content: "Hi", timeStamp: Date(), chatUuid: chatUuid, chatImage: UIImage(named: "TolgaImages")), Message(user: "Danny", content: "Hello", timeStamp: Date(), chatUuid: chatUuid, chatImage: UIImage(named: "DannyImages"))]
+        return messages
+    }
+    func addMessages(_ message: Message) {
+        messages.append(message)
+    }
+    func deleteMessage(_ message: Message) {
+        messages.removeAll(where: { $0.uuid == message.uuid })
     }
 }
 

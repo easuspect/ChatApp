@@ -9,15 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack {
-            Image(systemName: "person.crop.circle")
-            Text("name")
-            Spacer()
-            Circle()
-                .frame(width: 8)
-                .background(Color.green)
+        NavigationStack {
+           ChatListView()
         }
-        .padding([.all], 8)
     }
 }
 

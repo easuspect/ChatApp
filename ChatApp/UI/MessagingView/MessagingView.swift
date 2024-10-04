@@ -9,30 +9,16 @@ import SwiftUI
 
 struct MessagingView: View {
     
+    @StateObject var messagingViewModel = MessagingViewModel()
     @State var messageToSend: String = ""
-    @State private var isShowingChatListView = false
     
     
+    var chatUuid: UUID = UUID()
     var currentUser: String = "Tolga"
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button(action: { isShowingChatListView = true })
-                {
-                    Image(systemName: "person.badge.plus" )
-                        .resizable()
-                        .frame(width:40, height:40)
-                }
-            }
-            .padding(.horizontal, 24)
-            .sheet(isPresented: $isShowingChatListView) {
-                ChatListView()
-            }
-                
-                .padding(.horizontal, 24)
-                List(MessageRepository().getMessages(), id: \.uuid) { message in
+                List(messagingViewModel.getMessages(chatUuid: chatUuid), id: \.uuid) { message in
                     if message.user == currentUser {
                         SendMessage(message: message)
                     } else {
@@ -47,7 +33,7 @@ struct MessagingView: View {
                             RoundedRectangle(cornerRadius: 10.0)
                                 .stroke(.gray, lineWidth: 1)
                         }
-                    Button(action: { }) {
+                    Button(action: { messagingViewModel.addMessage(content: messageToSend, chatUuid: chatUuid)}) {
                         Image(systemName: "paperplane.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
@@ -55,6 +41,7 @@ struct MessagingView: View {
                 }
                 .padding(.horizontal, 16)
             }
+        .onAppear(perform: { messagingViewModel.messagingViewDidAppaer() })
         }
     }
     

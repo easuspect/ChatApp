@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D74E6F632CA87EC300A5F053 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E6F622CA87EC300A5F053 /* ChatViewModel.swift */; };
+		D74E701B2CAF10F600A5F053 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E701A2CAF10F600A5F053 /* AddContactView.swift */; };
+		D7C6BCB42C98B67000F09C16 /* MessagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6BCB32C98B67000F09C16 /* MessagingViewModel.swift */; };
 		D7CC9D182C83F66E008A73C5 /* ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CC9D172C83F66E008A73C5 /* ChatApp.swift */; };
 		D7CC9D1A2C83F66E008A73C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CC9D192C83F66E008A73C5 /* ContentView.swift */; };
 		D7CC9D1C2C83F670008A73C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CC9D1B2C83F670008A73C5 /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D74E6F622CA87EC300A5F053 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		D74E701A2CAF10F600A5F053 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		D7C6BCB32C98B67000F09C16 /* MessagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewModel.swift; sourceTree = "<group>"; };
 		D7CC9D142C83F66E008A73C5 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CC9D172C83F66E008A73C5 /* ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApp.swift; sourceTree = "<group>"; };
 		D7CC9D192C83F66E008A73C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		D7CC9D422C83F6A1008A73C5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC9D4D2C8414DB008A73C5 /* MessagingView */,
 				D7CC9D482C83F6F0008A73C5 /* ChatListView */,
 			);
 			path = UI;
@@ -173,9 +180,10 @@
 		D7CC9D482C83F6F0008A73C5 /* ChatListView */ = {
 			isa = PBXGroup;
 			children = (
-				D7CC9D4D2C8414DB008A73C5 /* MessagingView */,
 				D7CC9D492C83F716008A73C5 /* ChatListView.swift */,
 				D7CC9D4B2C83F724008A73C5 /* ChatRow.swift */,
+				D74E6F622CA87EC300A5F053 /* ChatViewModel.swift */,
+				D74E701A2CAF10F600A5F053 /* AddContactView.swift */,
 			);
 			path = ChatListView;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				D7CC9D4E2C8414F3008A73C5 /* MessagingView.swift */,
+				D7C6BCB32C98B67000F09C16 /* MessagingViewModel.swift */,
 			);
 			path = MessagingView;
 			sourceTree = "<group>";
@@ -321,11 +330,14 @@
 				D7CC9D452C83F6CC008A73C5 /* ChatContact.swift in Sources */,
 				D7CC9D532C8419C8008A73C5 /* Message.swift in Sources */,
 				D7CC9D4A2C83F716008A73C5 /* ChatListView.swift in Sources */,
+				D74E701B2CAF10F600A5F053 /* AddContactView.swift in Sources */,
 				D7CC9D1A2C83F66E008A73C5 /* ContentView.swift in Sources */,
 				D7CC9D4F2C8414F3008A73C5 /* MessagingView.swift in Sources */,
 				D7CC9D472C83F6E3008A73C5 /* ChatContactRepository.swift in Sources */,
 				D7CC9D4C2C83F724008A73C5 /* ChatRow.swift in Sources */,
+				D7C6BCB42C98B67000F09C16 /* MessagingViewModel.swift in Sources */,
 				D7CC9D182C83F66E008A73C5 /* ChatApp.swift in Sources */,
+				D74E6F632CA87EC300A5F053 /* ChatViewModel.swift in Sources */,
 				D7CC9D512C841951008A73C5 /* MessageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

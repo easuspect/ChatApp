@@ -8,8 +8,15 @@
 import Foundation
 
 class ChatContactRepository {
+    
+    private var contacts: [ChatContact] = []
+    
     func getChatContacts() -> [ChatContact] {
-        return [ChatContact(name: "Danny", isOnline: true), ChatContact(name: "Tolga", lastMessage: "Hi", isOnline: false), ChatContact(name: "Jenny", isOnline: false), ChatContact(name: "Brian", isOnline: false), ChatContact(name: "Ally", isOnline: false)]
+        return contacts
+    }
+    
+    func addContact(_ contact: ChatContact) {
+        contacts.append(contact)
     }
 }
 
