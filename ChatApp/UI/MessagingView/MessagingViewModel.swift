@@ -8,7 +8,10 @@
 import Foundation
 
 class MessagingViewModel: ObservableObject {
-    private var messageRepository: MessageRepository = MessageRepository()
+    
+    private var messageRepository: MessageRepository = MessageRepository(didReceviedMessage: { message in
+        
+    })
     @Published var messages: [Message] = []
     
     func getMessages(chatUuid: UUID) -> [Message] {
@@ -16,6 +19,9 @@ class MessagingViewModel: ObservableObject {
     }
     
     func messagingViewDidAppaer() {
+        messageRepository = MessageRepository(didReceviedMessage: { message in
+            self.messages.append(message)
+        })
         messages = messageRepository.getMessages()
     }
     

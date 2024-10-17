@@ -17,7 +17,9 @@ struct MessagingView: View {
     var currentUser: String = "Tolga"
     
     var body: some View {
-        VStack {
+        ZStack{
+            Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all)
+            VStack {
                 List(messagingViewModel.getMessages(chatUuid: chatUuid), id: \.uuid) { message in
                     if message.user == currentUser {
                         SendMessage(message: message)
@@ -41,16 +43,16 @@ struct MessagingView: View {
                 }
                 .padding(.horizontal, 16)
             }
-        .onAppear(perform: { messagingViewModel.messagingViewDidAppaer() })
+            .onAppear(perform: { messagingViewModel.messagingViewDidAppaer() })
         }
     }
-    
+}
     struct MessagingView_Previews: PreviewProvider {
         static var previews: some View {
             MessagingView()
         }
     }
-    
+
     struct SendMessage: View {
         var message: Message
         var body: some View {

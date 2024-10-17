@@ -20,8 +20,8 @@ class ChatViewModel: ObservableObject {
           chatContacts = chatContactRepository.getChatContacts()
     }
     
-    func addContact(contactName: String) {
-        let contact: ChatContact = ChatContact(name: contactName, isOnline: true)
+    func addContact(firstName: String, lastName: String) {
+        let contact: ChatContact = ChatContact(firstName: firstName, lastName: lastName, isOnline: true)
         chatContactRepository.addContact(contact)
         chatContacts = chatContactRepository.getChatContacts()
     }

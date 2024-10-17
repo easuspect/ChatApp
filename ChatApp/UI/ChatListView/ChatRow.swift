@@ -14,7 +14,7 @@ struct ChatRow: View {
         HStack {
             Image(systemName: "person.crop.circle")
             VStack(alignment: .leading) {
-                Text(chatContact.name)
+                Text("\(chatContact.firstName) \(chatContact.lastName)")
                 if let message = chatContact.lastMessage {
                     Text(message)
                         .fontWeight(.light)
@@ -37,7 +37,7 @@ struct ChatRow: View {
 
 struct ChatRow_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRow(chatContact: ChatContact(name: "Test User", lastMessage: "testing", isOnline: true))
+        ChatRow(chatContact: ChatContact(firstName: "Test", lastName: "User", lastMessage: "testing", isOnline: true))
             .previewLayout(.sizeThatFits)
     }
 }

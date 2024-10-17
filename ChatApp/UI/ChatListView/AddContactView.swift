@@ -13,6 +13,8 @@ struct AddContactView: View {
     @State var lastName: String = ""
     @State var chatList: [String] = []
     
+    var addContactAction: (String, String) -> Void
+    
     var body: some View {
         VStack(spacing: 20) {
             TextField("First Name", text: $firstName)
@@ -37,9 +39,9 @@ struct AddContactView: View {
             Button(action: {
                 
                 if !firstName.isEmpty && !lastName.isEmpty {
-                    chatList.append("\(firstName) \(lastName)")
-                                        firstName = ""  // Clear the text fields
-                                        lastName = ""
+                    addContactAction(firstName, lastName)
+                            firstName = ""  // Clear the text fields
+                            lastName = ""
                 }
                 // Button action goes here
                 print("Button Pressed")
@@ -57,7 +59,9 @@ struct AddContactView: View {
 
 struct AddContactView_Previews: PreviewProvider {
     static var previews: some View {
-        AddContactView()
+        AddContactView(addContactAction: { firstName, lastName in
+            
+        })
     }
 }
 

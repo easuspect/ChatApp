@@ -26,7 +26,10 @@ struct ChatListView: View {
             .padding(.horizontal)
             .sheet(isPresented: $isShowingChatListView) {
               //  ChatListView()
-                AddContactView()
+                AddContactView(addContactAction: { firstName, lastName in
+                    chatViewModel.addContact(firstName: firstName, lastName: lastName)
+                    isShowingChatListView = false
+                })
                 //create new addcontact view here
             }
                 
