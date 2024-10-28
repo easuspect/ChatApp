@@ -10,8 +10,11 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
-    @State private var name: String = ""
+    @State private var enteredName: String = ""
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
     @State private var emailAddress: String = ""
+    @State private var phoneNumber: String = ""
 
     
     var body: some View {
@@ -33,7 +36,7 @@ struct ProfileView: View {
                         .frame(alignment: .leading)
                     // check aspect ratio
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 50)
+                        .frame(width: 75, height: 75)
                         .clipShape(Circle())
                     Text("Enter your name and add an optional profile Picture")
                     Spacer()
@@ -46,7 +49,12 @@ struct ProfileView: View {
 //                        Spacer()
 //                    }
                     HStack {
-                        TextField("Name", text: $name)
+                        TextField("First Name", text: $firstName)
+                            .padding(.vertical, 32)
+                        Spacer()
+                    }
+                    HStack {
+                        TextField("Last Name", text: $lastName)
                             .padding(.vertical, 32)
                         Spacer()
                     }
@@ -54,18 +62,41 @@ struct ProfileView: View {
 //                        Text(profileViewModel.profileData.email)
 //                        // update ui,
 //                        Spacer()
-//
 //                    }
                     HStack {
+                        TextField("Phone number", text: $phoneNumber)
+                        Spacer()
+                    }
+                    
+                    HStack {
                         TextField("Email Address", text: $emailAddress)
+                            .padding(.vertical, 32)
                         
+                    }
+                    Spacer()
+                    Button(action: {
+                        profileViewModel.updateProfileData(firstName: firstName, lastName: lastName, email: emailAddress, phoneNumber: phoneNumber)
+                    }) {
+                        Text("Save Profile")
+                            .frame(width: 200, height: 40)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(10)
                     }
                 }
             }
             Spacer()
         }
         .padding(16)
-        .onAppear { profileViewModel.didAppear() }
+        .onAppear { profileViewModel.didAppear()
+        }
+        .onChange(of: profileViewModel.profileData, perform:{newValue in
+            firstName = newValue.firstName
+            lastName = newValue.lastName
+            phoneNumber = newValue.phoneNumber
+            emailAddress = newValue.email
+        })
+        
     }
 }
 

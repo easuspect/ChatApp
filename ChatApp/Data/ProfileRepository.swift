@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileRepository {
     
-    private var profileData: ProfileData = ProfileData(firstName: "Tolga", lastName: "Telseren", email: "tolgatelseren@gmail.com", imageURL: "TolgaImages")
+    private var profileData: ProfileData = ProfileData(firstName: "Tolga", lastName: "Telseren", email: "tolgatelseren@gmail.com", phoneNumber: "415-872-2329", imageURL: "TolgaImages")
     
     
     func getProfile() -> ProfileData {

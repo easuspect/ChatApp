@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct ProfileData {
+struct ProfileData: Equatable {
     let firstName: String
     let lastName: String
     let email: String
+    let phoneNumber: String 
     let imageURL: String
 }

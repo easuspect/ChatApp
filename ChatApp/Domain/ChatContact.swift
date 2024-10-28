@@ -13,5 +13,7 @@ struct ChatContact {
     var lastName: String
     var lastMessage: String?
     var isOnline: Bool
+   // email
+   // phone
 }
 
